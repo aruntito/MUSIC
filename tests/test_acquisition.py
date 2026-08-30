@@ -154,7 +154,7 @@ def test_cli_acquire_dry_run_and_flag_collision(mock_acq_env, capsys):
         assert ret == 0
         captured = capsys.readouterr()
         assert "MUSIC ACQUISITION DISCOVERY" in captured.out
-        assert "Official Store Purchase Required: 2" in captured.out
+        assert "Official Store Purchase Options: 2" in captured.out
 
     with patch("sys.argv", ["music-agent", "acquire", "--dry-run", "--execute"]):
         ret = main()

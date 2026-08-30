@@ -23,6 +23,8 @@ class AudioMetadata:
     album_artist: Optional[str] = None
     title: Optional[str] = None
     album: Optional[str] = None
+    year: Optional[str] = None
+    genre: Optional[str] = None
     track_number: Optional[str] = None
     has_embedded_metadata: bool = False
     metadata_source: str = "none"  # "tags", "filename", "partial"
@@ -103,6 +105,8 @@ def read_audio_metadata(file_path: Path) -> AudioMetadata:
     album_artist: Optional[str] = None
     title: Optional[str] = None
     album: Optional[str] = None
+    year: Optional[str] = None
+    genre: Optional[str] = None
     track_number: Optional[str] = None
     has_tags = False
 
@@ -119,6 +123,13 @@ def read_audio_metadata(file_path: Path) -> AudioMetadata:
             title = _first_tag_value(tags, ["title", "TITLE", "\xa9nam", "TIT2", "INAM"])
             # Album
             album = _first_tag_value(tags, ["album", "ALBUM", "\xa9alb", "TALB", "IPRD"])
+            # Year
+            year = _first_tag_value(tags, ["date", "DATE", "\xa9day", "TDRC", "TYER", "year", "YEAR"])
+            if year:
+                # Normalise to 4-digit year if possible (e.g. "2020-01-01" → "2020")
+                year = str(year).strip()[:4] if str(year).strip() else None
+            # Genre
+            genre = _first_tag_value(tags, ["genre", "GENRE", "\xa9gen", "TCON"])
             # Track number
             trkn = (
                 _first_tag_value(tags, ["tracknumber", "TRACKNUMBER", "TRCK", "ITRK"]) or
@@ -136,6 +147,7 @@ def read_audio_metadata(file_path: Path) -> AudioMetadata:
             album_artist = clean_title_or_artist(album_artist)
             title = clean_title_or_artist(title)
             album = clean_title_or_artist(album)
+            genre = clean_title_or_artist(genre)
 
             if artist or title:
                 has_tags = True
@@ -165,6 +177,8 @@ def read_audio_metadata(file_path: Path) -> AudioMetadata:
         album_artist=album_artist,
         title=title,
         album=album,
+        year=year,
+        genre=genre,
         track_number=track_number,
         has_embedded_metadata=has_tags,
         metadata_source=source,
