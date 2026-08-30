@@ -398,6 +398,44 @@ def build_parser() -> argparse.ArgumentParser:
         help="Target directory on Android phone (default: /sdcard/Music)",
     )
 
+    # Command: analyze
+    analyze_parser = subparsers.add_parser("analyze", help="Analyze loudness / EBU R128 and write ReplayGain tags")
+    analyze_parser.add_argument(
+        "--path",
+        "-p",
+        type=str,
+        default=None,
+        help="Audio file or directory to analyze (default: ~/Downloads/Songs)",
+    )
+    analyze_parser.add_argument(
+        "--write-tags",
+        action="store_true",
+        default=False,
+        help="Explicitly write REPLAYGAIN_TRACK_GAIN and REPLAYGAIN_TRACK_PEAK tags (no re-encoding)",
+    )
+
+    # Command: dupes
+    dupes_parser = subparsers.add_parser("dupes", help="Detect duplicate files using SHA-256 and optional AcoustID fingerprinting")
+    dupes_parser.add_argument(
+        "--path",
+        "-p",
+        type=str,
+        default=None,
+        help="Directory to scan for duplicates (default: ~/Downloads/Songs)",
+    )
+    dupes_parser.add_argument(
+        "--no-acoustid",
+        action="store_true",
+        default=False,
+        help="Disable acoustic fingerprinting check (use SHA-256 only)",
+    )
+    dupes_parser.add_argument(
+        "--format",
+        choices=["table", "json"],
+        default="table",
+        help="Output format (default: table)",
+    )
+
     return parser
 
 
@@ -899,6 +937,99 @@ def handle_full_sync(args: argparse.Namespace) -> int:
     return 0
 
 
+def handle_analyze(args: argparse.Namespace) -> int:
+    """Analyze loudness / EBU R128 and optionally write ReplayGain tags."""
+    from music_agent.loudness import analyze_loudness, analyze_directory, write_replaygain_tags  # noqa: PLC0415
+
+    target_path = Path(args.path).expanduser().resolve() if args.path else Path.home() / "Downloads" / "Songs"
+
+    if not target_path.exists():
+        print(f"[ERROR] Target path does not exist: {target_path}", file=sys.stderr)
+        return 1
+
+    print("=" * 60)
+    print("  LOUDNESS & REPLAYGAIN ANALYSIS")
+    print("=" * 60)
+    print(f"  Target:     {target_path}")
+    print(f"  Write Tags: {'Yes (ReplayGain tags)' if args.write_tags else 'No (Analysis only)'}")
+    print("-" * 60)
+
+    if target_path.is_file():
+        info = analyze_loudness(target_path)
+        if not info:
+            print(f"[ERROR] Failed to analyze {target_path.name} (ensure ffmpeg is available).", file=sys.stderr)
+            return 1
+        print(f"  File:               {info.file_path.name}")
+        print(f"  Integrated LUFS:    {info.integrated_lufs:.2f} LUFS")
+        print(f"  True Peak:          {info.true_peak_dbfs:.2f} dBTP")
+        print(f"  Loudness Range:     {info.lra_lu:.2f} LU")
+        print(f"  ReplayGain Gain:    {info.replaygain_gain_db:+.2f} dB")
+        print(f"  ReplayGain Peak:    {info.replaygain_peak:.6f}")
+        if args.write_tags:
+            success = write_replaygain_tags(target_path, info)
+            print(f"  Tags Written:       {'✅ Success' if success else '❌ Failed'}")
+    else:
+        results = analyze_directory(target_path, write_tags=args.write_tags)
+        print(f"  Analyzed {len(results)} audio file(s):")
+        for info in results:
+            tag_status = " [tags written]" if args.write_tags else ""
+            print(f"    {info.file_path.name:<40} {info.integrated_lufs:>6.2f} LUFS  {info.replaygain_gain_db:>+6.2f} dB{tag_status}")
+
+    print("=" * 60)
+    return 0
+
+
+def handle_dupes(args: argparse.Namespace) -> int:
+    """Detect duplicates using SHA-256 and optional AcoustID fingerprinting."""
+    from music_agent.fingerprint import find_duplicates  # noqa: PLC0415
+
+    scan_path = Path(args.path).expanduser().resolve() if args.path else Path.home() / "Downloads" / "Songs"
+
+    if not scan_path.exists():
+        print(f"[ERROR] Directory does not exist: {scan_path}", file=sys.stderr)
+        return 1
+
+    use_acoustid = not args.no_acoustid
+    groups = find_duplicates(scan_path, use_acoustid=use_acoustid)
+
+    if args.format == "json":
+        import json  # noqa: PLC0415
+        out = [
+            {
+                "canonical": str(g.canonical_path),
+                "duplicates": [str(d) for d in g.duplicates],
+                "method": g.method,
+                "confidence": g.confidence,
+                "note": g.note,
+            }
+            for g in groups
+        ]
+        print(json.dumps(out, indent=2))
+        return 0
+
+    print("=" * 60)
+    print("  DUPLICATE FILE DETECTION (ADVISORY ONLY)")
+    print("=" * 60)
+    print(f"  Scan Directory: {scan_path}")
+    print(f"  AcoustID:       {'Enabled (if fpcalc present)' if use_acoustid else 'Disabled'}")
+    print(f"  Duplicate Groups Found: {len(groups)}")
+    print("-" * 60)
+
+    if not groups:
+        print("  ✅ No duplicate files found.")
+    else:
+        for i, g in enumerate(groups, 1):
+            print(f"\n  [Group {i}] Method: {g.method.upper()} ({g.confidence}) — {g.note}")
+            print(f"    ⭐ Primary:   {g.canonical_path.name}")
+            for d in g.duplicates:
+                print(f"    ⚠ Duplicate: {d.name} ({d.parent.name})")
+
+    print("\n" + "=" * 60)
+    print("  Note: No files were deleted or modified. This report is advisory.")
+    print("=" * 60)
+    return 0
+
+
 def main() -> int:
     parser = build_parser()
     if len(sys.argv) == 1:
@@ -926,6 +1057,10 @@ def main() -> int:
         return handle_stats(args)
     elif args.command == "full-sync":
         return handle_full_sync(args)
+    elif args.command == "analyze":
+        return handle_analyze(args)
+    elif args.command == "dupes":
+        return handle_dupes(args)
     else:
         parser.print_help()
         return 0

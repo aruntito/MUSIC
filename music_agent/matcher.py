@@ -145,3 +145,61 @@ class ArtistMatcher:
             confidence=confidence,
             reason=f"Matched {rule.canonical_name} ({confidence})"
         )
+
+    def fuzzy_suggest(
+        self,
+        artist_name: str,
+        threshold: float = 92.0,
+    ) -> Optional[Tuple[str, float]]:
+        """
+        Advisory-only fuzzy match against the curated artist list using rapidfuzz.
+
+        Returns (canonical_name, confidence_score) if a match is found above
+        threshold, or None if no confident suggestion is available.
+
+        IMPORTANT: This method is ADVISORY ONLY. It NEVER routes files
+        automatically. The caller decides whether to surface the suggestion
+        in a report. Do NOT use this for automatic file placement.
+
+        Args:
+            artist_name: Raw artist name to match.
+            threshold: Minimum similarity score 0–100 (default 92.0).
+
+        Returns:
+            Tuple of (canonical_artist_name, score) or None.
+        """
+        try:
+            from rapidfuzz import process as fuzz_process, fuzz  # noqa: PLC0415
+        except ImportError:
+            return None  # rapidfuzz not installed — advisory feature unavailable
+
+        if not artist_name or not artist_name.strip():
+            return None
+
+        # Build list of all canonical names and aliases to match against
+        all_names = list(self._exact_map.keys()) + list(self._alias_map.keys())
+        if not all_names:
+            return None
+
+        query = normalize_string(artist_name)
+        choices_normalized = [normalize_string(n) for n in all_names]
+
+        best = fuzz_process.extractOne(
+            query,
+            choices_normalized,
+            scorer=fuzz.WRatio,
+            score_cutoff=threshold,
+        )
+
+        if best is None:
+            return None
+
+        matched_normalized = best[0]
+        score = best[1]
+
+        # Map back from normalized alias/name to canonical artist
+        for raw_name, rule in {**self._exact_map, **self._alias_map}.items():
+            if normalize_string(raw_name) == matched_normalized:
+                return (rule.canonical_name, score)
+
+        return None
