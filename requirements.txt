@@ -1,0 +1,2 @@
+mutagen>=1.48.0
+pytest>=8.0.0
