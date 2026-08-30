@@ -1,0 +1,212 @@
+{
+  "paths": {
+    "source_dir": "~/Music/Inbox",
+    "destination_dir": "~/Downloads/Songs",
+    "review_dir": "~/Music/Review"
+  },
+  "file_naming": {
+    "format": "{artist} - {title}.{ext}",
+    "sanitize_macos_android": true,
+    "max_filename_length": 180
+  },
+  "supported_extensions": [
+    ".mp3",
+    ".m4a",
+    ".flac",
+    ".wav",
+    ".ogg"
+  ],
+  "categories": {
+    "International": {
+      "folder_template": "International/{artist}",
+      "artists": [
+        {
+          "name": "Billie Eilish",
+          "aliases": ["billie eilish", "billie eilish feat", "billie-eilish"]
+        },
+        {
+          "name": "XXXTentacion",
+          "aliases": ["xxxtentacion", "xxx tentacion", "jahseh dwayne ricardo onfroy"]
+        },
+        {
+          "name": "Wiz Khalifa",
+          "aliases": ["wiz khalifa", "cameron jibril thomaz"]
+        },
+        {
+          "name": "Snoop Dogg",
+          "aliases": ["snoop dogg", "snoop doggy dogg", "snoop lion", "calvin cordozar broadus jr."]
+        },
+        {
+          "name": "The Weeknd",
+          "aliases": ["the weeknd", "weeknd", "abel tesfaye"]
+        },
+        {
+          "name": "Travis Scott",
+          "aliases": ["travis scott", "travi$ scott", "jacques bermon webster ii"]
+        },
+        {
+          "name": "Kanye West",
+          "aliases": ["kanye west", "ye", "kanye omari west"]
+        },
+        {
+          "name": "Kendrick Lamar",
+          "aliases": ["kendrick lamar", "kendrick lamar duckworth", "k.dot"]
+        },
+        {
+          "name": "Drake",
+          "aliases": ["drake", "aubrey drake graham", "champagnepapi"]
+        },
+        {
+          "name": "Juice WRLD",
+          "aliases": ["juice wrld", "juicewrld", "jarad anthony higgins"]
+        },
+        {
+          "name": "Post Malone",
+          "aliases": ["post malone", "austin richard post"]
+        },
+        {
+          "name": "Arctic Monkeys",
+          "aliases": ["arctic monkeys"]
+        },
+        {
+          "name": "Frank Ocean",
+          "aliases": ["frank ocean", "christopher edwin breaux"]
+        },
+        {
+          "name": "Tyler, The Creator",
+          "aliases": ["tyler, the creator", "tyler the creator", "tyler okonma"]
+        },
+        {
+          "name": "Mac Miller",
+          "aliases": ["mac miller", "malcolm james mccormick"]
+        },
+        {
+          "name": "Eminem",
+          "aliases": ["eminem", "marshall mathers", "slim shady"]
+        },
+        {
+          "name": "21 Savage",
+          "aliases": ["21 savage", "shéyaa bin abraham-joseph", "sheyaa bin abraham-joseph"]
+        },
+        {
+          "name": "Metro Boomin",
+          "aliases": ["metro boomin", "leland tyler wayne"]
+        },
+        {
+          "name": "Future",
+          "aliases": ["future", "nayvadius demun wilburn"]
+        },
+        {
+          "name": "Bruno Mars",
+          "aliases": ["bruno mars", "peter gene hernandez"]
+        },
+        {
+          "name": "Linkin Park",
+          "aliases": ["linkin park"]
+        },
+        {
+          "name": "Lana Del Rey",
+          "aliases": ["lana del rey", "elizabeth woolridge grant"]
+        },
+        {
+          "name": "Cigarettes After Sex",
+          "aliases": ["cigarettes after sex", "cas"]
+        }
+      ]
+    },
+    "Indian/Telugu": {
+      "folder_template": "Indian/Telugu",
+      "artists": [
+        {
+          "name": "Anirudh Ravichander",
+          "aliases": ["anirudh ravichander", "anirudh", "rockstar anirudh"]
+        },
+        {
+          "name": "S. P. Balasubrahmanyam",
+          "aliases": ["s. p. balasubrahmanyam", "sp balasubrahmanyam", "s.p. balasubrahmanyam", "spb", "s. p. b.", "s p balasubrahmanyam", "s. p. balasubramanyam", "sp balasubramanyam"]
+        },
+        {
+          "name": "Sid Sriram",
+          "aliases": ["sid sriram", "sidsriram"]
+        },
+        {
+          "name": "Devi Sri Prasad",
+          "aliases": ["devi sri prasad", "dsp", "devi sri prasad (dsp)"]
+        },
+        {
+          "name": "Thaman S",
+          "aliases": ["thaman s", "s. thaman", "s thaman", "ss thaman"]
+        },
+        {
+          "name": "Vivek Sagar",
+          "aliases": ["vivek sagar"]
+        },
+        {
+          "name": "Mickey J. Meyer",
+          "aliases": ["mickey j. meyer", "mickey j meyer", "mickey j. meyer (music director)"]
+        },
+        {
+          "name": "Gopi Sundar",
+          "aliases": ["gopi sundar", "gopi sunder"]
+        },
+        {
+          "name": "Ram Miriyala",
+          "aliases": ["ram miriyala"]
+        },
+        {
+          "name": "Karthik",
+          "aliases": ["karthik", "singer karthik"]
+        },
+        {
+          "name": "Chinmayi",
+          "aliases": ["chinmayi", "chinmayi sripaada", "chinmayi sripada"]
+        },
+        {
+          "name": "Shreya Ghoshal",
+          "aliases": ["shreya ghoshal", "shreya ghosal"]
+        }
+      ]
+    },
+    "Indian/Hindi": {
+      "folder_template": "Indian/Hindi",
+      "artists": [
+        {
+          "name": "Arijit Singh",
+          "aliases": ["arijit singh", "arijit"]
+        },
+        {
+          "name": "KK",
+          "aliases": ["kk", "krishnakumar kunnath", "k.k."]
+        },
+        {
+          "name": "Sonu Nigam",
+          "aliases": ["sonu nigam"]
+        },
+        {
+          "name": "Mohit Chauhan",
+          "aliases": ["mohit chauhan"]
+        },
+        {
+          "name": "Atif Aslam",
+          "aliases": ["atif aslam"]
+        },
+        {
+          "name": "Pritam",
+          "aliases": ["pritam", "pritam chakraborty"]
+        },
+        {
+          "name": "Amit Trivedi",
+          "aliases": ["amit trivedi"]
+        },
+        {
+          "name": "Vishal-Shekhar",
+          "aliases": ["vishal-shekhar", "vishal & shekhar", "vishal shekhar", "vishal dadlani", "shekhar ravjiani"]
+        },
+        {
+          "name": "Shankar-Ehsaan-Loy",
+          "aliases": ["shankar-ehsaan-loy", "shankar ehsaan loy", "shankar, ehsaan & loy", "sel"]
+        }
+      ]
+    }
+  }
+}

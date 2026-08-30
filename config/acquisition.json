@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "settings": {
+    "default_mode": "dry-run",
+    "timeout_seconds": 15,
+    "max_download_size_bytes": 262144000,
+    "allowed_schemes": ["file", "https"],
+    "trusted_direct_domains": [
+      "bandcamp.com",
+      "archive.org",
+      "freemusicarchive.org",
+      "jamendo.com"
+    ]
+  },
+  "connectors": {
+    "manual_local": {
+      "enabled": true,
+      "description": "User-supplied authorized local files or direct download URLs"
+    },
+    "official_stores": {
+      "enabled": true,
+      "description": "Discovers legitimate digital store search destinations (iTunes, Bandcamp, Qobuz) and marks tracks as PURCHASE_REQUIRED"
+    },
+    "public_archives": {
+      "enabled": true,
+      "description": "Searches authorized Creative Commons and Public Domain archives"
+    }
+  }
+}

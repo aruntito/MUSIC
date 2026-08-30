@@ -1,0 +1,291 @@
+{
+  "version": 1,
+  "tracks": [
+    {
+      "artist": "Billie Eilish",
+      "title": "Ocean Eyes",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Don't Smile at Me",
+      "year": 2016,
+      "duration": "3:20",
+      "source_url": ""
+    },
+    {
+      "artist": "Billie Eilish",
+      "title": "Bad Guy",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "When We All Fall Asleep, Where Do We Go?",
+      "year": 2019,
+      "duration": "3:14",
+      "source_url": ""
+    },
+    {
+      "artist": "XXXTentacion",
+      "title": "Moonlight",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "?",
+      "year": 2018,
+      "duration": "2:15",
+      "source_url": ""
+    },
+    {
+      "artist": "Wiz Khalifa",
+      "title": "See You Again",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Furious 7 Soundtrack",
+      "year": 2015,
+      "duration": "3:49",
+      "source_url": ""
+    },
+    {
+      "artist": "The Weeknd",
+      "title": "Blinding Lights",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "After Hours",
+      "year": 2020,
+      "duration": "3:20",
+      "source_url": ""
+    },
+    {
+      "artist": "Travis Scott",
+      "title": "Sicko Mode",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Astroworld",
+      "year": 2018,
+      "duration": "5:12",
+      "source_url": ""
+    },
+    {
+      "artist": "Kanye West",
+      "title": "Stronger",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Graduation",
+      "year": 2007,
+      "duration": "5:11",
+      "source_url": ""
+    },
+    {
+      "artist": "Kendrick Lamar",
+      "title": "HUMBLE.",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "DAMN.",
+      "year": 2017,
+      "duration": "2:57",
+      "source_url": ""
+    },
+    {
+      "artist": "Drake",
+      "title": "God's Plan",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Scorpion",
+      "year": 2018,
+      "duration": "3:18",
+      "source_url": ""
+    },
+    {
+      "artist": "Juice WRLD",
+      "title": "Lucid Dreams",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Goodbye & Good Riddance",
+      "year": 2018,
+      "duration": "3:59",
+      "source_url": ""
+    },
+    {
+      "artist": "Post Malone",
+      "title": "Circles",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Hollywood's Bleeding",
+      "year": 2019,
+      "duration": "3:35",
+      "source_url": ""
+    },
+    {
+      "artist": "Arctic Monkeys",
+      "title": "Do I Wanna Know?",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "AM",
+      "year": 2013,
+      "duration": "4:32",
+      "source_url": ""
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "Numb",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Meteora",
+      "year": 2003,
+      "duration": "3:07",
+      "source_url": ""
+    },
+    {
+      "artist": "Lana Del Rey",
+      "title": "Summertime Sadness",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Born to Die",
+      "year": 2012,
+      "duration": "4:25",
+      "source_url": ""
+    },
+    {
+      "artist": "Cigarettes After Sex",
+      "title": "Apocalypse",
+      "category": "International",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Cigarettes After Sex",
+      "year": 2017,
+      "duration": "4:50",
+      "source_url": ""
+    },
+    {
+      "artist": "Sid Sriram",
+      "title": "Samajavaragamana",
+      "category": "Indian/Telugu",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Ala Vaikunthapurramuloo",
+      "year": 2020,
+      "duration": "3:43",
+      "source_url": ""
+    },
+    {
+      "artist": "Anirudh Ravichander",
+      "title": "Hukum",
+      "category": "Indian/Telugu",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Jailer (Telugu)",
+      "year": 2023,
+      "duration": "3:27",
+      "source_url": ""
+    },
+    {
+      "artist": "S. P. Balasubrahmanyam",
+      "title": "Priyathama",
+      "category": "Indian/Telugu",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Jagadeka Veerudu Athiloka Sundari",
+      "year": 1990,
+      "duration": "5:30",
+      "source_url": ""
+    },
+    {
+      "artist": "Devi Sri Prasad",
+      "title": "Oo Antava Mawa",
+      "category": "Indian/Telugu",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Pushpa: The Rise",
+      "year": 2021,
+      "duration": "3:48",
+      "source_url": ""
+    },
+    {
+      "artist": "Thaman S",
+      "title": "Butta Bomma",
+      "category": "Indian/Telugu",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Ala Vaikunthapurramuloo",
+      "year": 2020,
+      "duration": "3:18",
+      "source_url": ""
+    },
+    {
+      "artist": "Ram Miriyala",
+      "title": "Chitti",
+      "category": "Indian/Telugu",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Jathi Ratnalu",
+      "year": 2021,
+      "duration": "3:02",
+      "source_url": ""
+    },
+    {
+      "artist": "Arijit Singh",
+      "title": "Kesariya",
+      "category": "Indian/Hindi",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Brahmāstra",
+      "year": 2022,
+      "duration": "4:28",
+      "source_url": ""
+    },
+    {
+      "artist": "KK",
+      "title": "Zara Sa",
+      "category": "Indian/Hindi",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Jannat",
+      "year": 2008,
+      "duration": "5:03",
+      "source_url": ""
+    },
+    {
+      "artist": "Sonu Nigam",
+      "title": "Kal Ho Naa Ho",
+      "category": "Indian/Hindi",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Kal Ho Naa Ho",
+      "year": 2003,
+      "duration": "5:21",
+      "source_url": ""
+    },
+    {
+      "artist": "Mohit Chauhan",
+      "title": "Tum Se Hi",
+      "category": "Indian/Hindi",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Jab We Met",
+      "year": 2007,
+      "duration": "5:23",
+      "source_url": ""
+    },
+    {
+      "artist": "Pritam",
+      "title": "Tum Mile",
+      "category": "Indian/Hindi",
+      "priority": "core",
+      "status": "wanted",
+      "album": "Tum Mile",
+      "year": 2009,
+      "duration": "5:44",
+      "source_url": ""
+    }
+  ]
+}
